@@ -8,7 +8,7 @@ const each_token_suffix = (suffixes, template) => {
 }
 
 module.exports = grammar({
-  name: 'slim',
+  name: 'slangtemplate',
 
   externals: $ => [
     $._block_start,

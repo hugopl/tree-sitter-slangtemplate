@@ -1,21 +1,21 @@
 {
   "grammars": [
     {
-      "name": "slim",
-      "camelcase": "Slim",
-      "scope": "text.slim",
+      "name": "slangtemplate",
+      "camelcase": "SlangTemplate",
+      "scope": "text.slang",
       "path": ".",
       "file-types": [
-        "slim"
+        "slang"
       ]
     }
   ],
   "metadata": {
     "version": "0.0.1",
     "license": "MIT",
-    "description": "A tree-sitter based parser for slim template language",
+    "description": "A tree-sitter based parser for slang template language",
     "links": {
-      "repository": "https://github.com/tree-sitter/tree-sitter-slim"
+      "repository": "https://github.com/hugopl/tree-sitter-slang"
     }
   },
   "bindings": {

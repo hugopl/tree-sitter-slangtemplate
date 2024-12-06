@@ -24,19 +24,19 @@ typedef struct {
   int dedents_to_output;
 } Scanner;
 
-void *tree_sitter_slim_external_scanner_create(void) {
+void *tree_sitter_slangtemplate_external_scanner_create(void) {
   Scanner *scanner = ts_malloc(sizeof(Scanner));
   array_init(&scanner->indents);
   scanner->dedents_to_output = 0;
   return scanner;
 }
 
-void tree_sitter_slim_external_scanner_destroy(void *payload) {
+void tree_sitter_slangtemplate_external_scanner_destroy(void *payload) {
   Scanner *scanner = (Scanner*)payload;
   array_delete(&scanner->indents);
 }
 
-unsigned tree_sitter_slim_external_scanner_serialize(
+unsigned tree_sitter_slangtemplate_external_scanner_serialize(
                                                      void *payload,
                                                      char *buffer
                                                      ) {
@@ -69,7 +69,7 @@ unsigned tree_sitter_slim_external_scanner_serialize(
   return length;
 }
 
-void tree_sitter_slim_external_scanner_deserialize(
+void tree_sitter_slangtemplate_external_scanner_deserialize(
                                                    void *payload,
                                                    const char *buffer,
                                                    unsigned length
@@ -229,7 +229,7 @@ static bool scan_ruby(TSLexer *lexer) {
 }
 
 
-bool tree_sitter_slim_external_scanner_scan(
+bool tree_sitter_slangtemplate_external_scanner_scan(
                                             void *payload,
                                             TSLexer *lexer,
                                             const bool *valid_symbols

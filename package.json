@@ -1,7 +1,7 @@
 {
-  "name": "tree-sitter-slim",
+  "name": "tree-sitter-slang",
   "version": "0.0.1",
-  "description": "A tree-sitter based parser for slim template language",
+  "description": "A tree-sitter based parser for slang template language",
   "main": "bindings/node",
   "types": "bindings/node",
   "scripts": {
