@@ -18,11 +18,29 @@
     ]
   },
   {
+    "type": "_crystal_block",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "crystal_block_control",
+        "named": true
+      },
+      {
+        "type": "crystal_block_output",
+        "named": true
+      },
+      {
+        "type": "crystal_block_output_noescape",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "_line",
     "named": true,
     "subtypes": [
       {
-        "type": "_ruby_block",
+        "type": "_crystal_block",
         "named": true
       },
       {
@@ -74,24 +92,6 @@
     ]
   },
   {
-    "type": "_ruby_block",
-    "named": true,
-    "subtypes": [
-      {
-        "type": "ruby_block_control",
-        "named": true
-      },
-      {
-        "type": "ruby_block_output",
-        "named": true
-      },
-      {
-        "type": "ruby_block_output_noescape",
-        "named": true
-      }
-    ]
-  },
-  {
     "type": "attr",
     "named": true,
     "fields": {
@@ -124,11 +124,11 @@
         "required": false,
         "types": [
           {
-            "type": "attr_value_quoted",
+            "type": "attr_value_crystal",
             "named": true
           },
           {
-            "type": "attr_value_ruby",
+            "type": "attr_value_quoted",
             "named": true
           }
         ]
@@ -238,6 +238,92 @@
     "type": "code_comment",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "crystal_block_control",
+    "named": true,
+    "fields": {
+      "nested": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "nested",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "crystal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "crystal_block_output",
+    "named": true,
+    "fields": {
+      "nested": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "nested",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "_output_modifier",
+          "named": true
+        },
+        {
+          "type": "crystal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "crystal_block_output_noescape",
+    "named": true,
+    "fields": {
+      "nested": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "nested",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "_output_modifier",
+          "named": true
+        },
+        {
+          "type": "crystal",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "doctype",
@@ -419,105 +505,19 @@
       "required": true,
       "types": [
         {
+          "type": "crystal_block_output",
+          "named": true
+        },
+        {
+          "type": "crystal_block_output_noescape",
+          "named": true
+        },
+        {
           "type": "element",
           "named": true
         },
         {
           "type": "embedded_engine",
-          "named": true
-        },
-        {
-          "type": "ruby_block_output",
-          "named": true
-        },
-        {
-          "type": "ruby_block_output_noescape",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "ruby_block_control",
-    "named": true,
-    "fields": {
-      "nested": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "nested",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "ruby",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "ruby_block_output",
-    "named": true,
-    "fields": {
-      "nested": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "nested",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "_output_modifier",
-          "named": true
-        },
-        {
-          "type": "ruby",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "ruby_block_output_noescape",
-    "named": true,
-    "fields": {
-      "nested": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "nested",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "_output_modifier",
-          "named": true
-        },
-        {
-          "type": "ruby",
           "named": true
         }
       ]
@@ -623,11 +623,11 @@
     "named": true
   },
   {
-    "type": "attr_value_quoted",
+    "type": "attr_value_crystal",
     "named": true
   },
   {
-    "type": "attr_value_ruby",
+    "type": "attr_value_quoted",
     "named": true
   },
   {
@@ -637,6 +637,14 @@
   {
     "type": "coffee",
     "named": false
+  },
+  {
+    "type": "crystal",
+    "named": false
+  },
+  {
+    "type": "crystal",
+    "named": true
   },
   {
     "type": "css",
@@ -692,14 +700,6 @@
   },
   {
     "type": "rdoc",
-    "named": false
-  },
-  {
-    "type": "ruby",
-    "named": true
-  },
-  {
-    "type": "ruby",
     "named": false
   },
   {

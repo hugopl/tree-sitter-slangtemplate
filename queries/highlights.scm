@@ -1,9 +1,9 @@
 (code_comment) @comment
 (html_comment) @comment
 (attr_name) @attribute
-(ruby_block_control "-" @keyword)
-(ruby_block_output "=" @keyword)
-(ruby_block_output_noescape "==" @keyword)
+(crystal_block_control "-" @keyword)
+(crystal_block_output "=" @keyword)
+(crystal_block_output_noescape "==" @keyword)
 (doctype) @keyword
 ":" @punctuation.delimiter
 (embedded_engine_name) @function.builtin
@@ -13,3 +13,4 @@
 (attrs ["(" ")" "[" "]" "{" "}"] @punctuation.bracket)
 (attr_assignment) @punctuation.delimiter
 (attr_assignment_noescape) @punctuation.delimiter
+(attr_value_quoted) @string

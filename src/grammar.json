@@ -69,7 +69,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_ruby_block"
+          "name": "_crystal_block"
         },
         {
           "type": "SYMBOL",
@@ -265,11 +265,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "ruby_block_output"
+          "name": "crystal_block_output"
         },
         {
           "type": "SYMBOL",
-          "name": "ruby_block_output_noescape"
+          "name": "crystal_block_output_noescape"
         }
       ]
     },
@@ -454,10 +454,10 @@
           "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
-            "name": "_attr_value_ruby_p"
+            "name": "_attr_value_crystal_p"
           },
           "named": true,
-          "value": "attr_value_ruby"
+          "value": "attr_value_crystal"
         }
       ]
     },
@@ -470,7 +470,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_attr_value_ruby_p"
+          "name": "_attr_value_crystal_p"
         }
       ]
     },
@@ -607,10 +607,10 @@
           "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
-            "name": "_attr_value_ruby_s"
+            "name": "_attr_value_crystal_s"
           },
           "named": true,
-          "value": "attr_value_ruby"
+          "value": "attr_value_crystal"
         }
       ]
     },
@@ -623,7 +623,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_attr_value_ruby_s"
+          "name": "_attr_value_crystal_s"
         }
       ]
     },
@@ -760,10 +760,10 @@
           "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
-            "name": "_attr_value_ruby_b"
+            "name": "_attr_value_crystal_b"
           },
           "named": true,
-          "value": "attr_value_ruby"
+          "value": "attr_value_crystal"
         }
       ]
     },
@@ -776,7 +776,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_attr_value_ruby_b"
+          "name": "_attr_value_crystal_b"
         }
       ]
     },
@@ -916,7 +916,7 @@
               "type": "ALIAS",
               "content": {
                 "type": "SYMBOL",
-                "name": "_attr_value_ruby"
+                "name": "_attr_value_crystal"
               },
               "named": true,
               "value": "attr_splat"
@@ -997,10 +997,10 @@
           "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
-            "name": "_attr_value_ruby"
+            "name": "_attr_value_crystal"
           },
           "named": true,
-          "value": "attr_value_ruby"
+          "value": "attr_value_crystal"
         }
       ]
     },
@@ -1203,24 +1203,24 @@
       "type": "PATTERN",
       "value": "\\w+"
     },
-    "_ruby_block": {
+    "_crystal_block": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "ruby_block_control"
+          "name": "crystal_block_control"
         },
         {
           "type": "SYMBOL",
-          "name": "ruby_block_output"
+          "name": "crystal_block_output"
         },
         {
           "type": "SYMBOL",
-          "name": "ruby_block_output_noescape"
+          "name": "crystal_block_output_noescape"
         }
       ]
     },
-    "ruby_block_control": {
+    "crystal_block_control": {
       "type": "SEQ",
       "members": [
         {
@@ -1229,7 +1229,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "ruby"
+          "name": "crystal"
         },
         {
           "type": "CHOICE",
@@ -1249,7 +1249,7 @@
         }
       ]
     },
-    "ruby_block_output": {
+    "crystal_block_output": {
       "type": "SEQ",
       "members": [
         {
@@ -1282,7 +1282,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "ruby"
+          "name": "crystal"
         },
         {
           "type": "CHOICE",
@@ -1302,7 +1302,7 @@
         }
       ]
     },
-    "ruby_block_output_noescape": {
+    "crystal_block_output_noescape": {
       "type": "SEQ",
       "members": [
         {
@@ -1335,7 +1335,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "ruby"
+          "name": "crystal"
         },
         {
           "type": "CHOICE",
@@ -1570,7 +1570,7 @@
             "value": 1,
             "content": {
               "type": "STRING",
-              "value": "ruby"
+              "value": "crystal"
             }
           }
         }
@@ -1863,23 +1863,23 @@
     },
     {
       "type": "SYMBOL",
-      "name": "_attr_value_ruby"
+      "name": "_attr_value_crystal"
     },
     {
       "type": "SYMBOL",
-      "name": "_attr_value_ruby_p"
+      "name": "_attr_value_crystal_p"
     },
     {
       "type": "SYMBOL",
-      "name": "_attr_value_ruby_s"
+      "name": "_attr_value_crystal_s"
     },
     {
       "type": "SYMBOL",
-      "name": "_attr_value_ruby_b"
+      "name": "_attr_value_crystal_b"
     },
     {
       "type": "SYMBOL",
-      "name": "ruby"
+      "name": "crystal"
     },
     {
       "type": "SYMBOL",
@@ -1889,7 +1889,7 @@
   "inline": [],
   "supertypes": [
     "_line",
-    "_ruby_block",
+    "_crystal_block",
     "_attr_shortcut",
     "_output_modifier"
   ]

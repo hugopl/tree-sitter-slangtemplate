@@ -8,11 +8,11 @@ enum TokenType {
   LINE_SEPARATOR,
 
   ATTR_VALUE_QUOTED,
-  ATTR_VALUE_RUBY,
-  ATTR_VALUE_RUBY_P,
-  ATTR_VALUE_RUBY_S,
-  ATTR_VALUE_RUBY_B,
-  RUBY,
+  ATTR_VALUE_CRYSTAL,
+  ATTR_VALUE_CRYSTAL_P,
+  ATTR_VALUE_CRYSTAL_S,
+  ATTR_VALUE_CRYSTAL_B,
+  CRYSTAL,
 
   ERROR_SENTINEL
 };
@@ -129,7 +129,7 @@ static bool scan_attr_quoted(TSLexer *lexer, char quote_type) {
   }
 }
 
-static bool scan_attr_ruby(TSLexer *lexer, char closing_delimiter, TSSymbol result_symbol) {
+static bool scan_attr_crystal(TSLexer *lexer, char closing_delimiter, TSSymbol result_symbol) {
   char internal_delimiter_open = 0;
   char internal_delimiter_close = 0;
   int internal_delimiter_nesting = 0;
@@ -204,7 +204,7 @@ static bool scan_attr_ruby(TSLexer *lexer, char closing_delimiter, TSSymbol resu
   }
 }
 
-static bool scan_ruby(TSLexer *lexer) {
+static bool scan_crystal(TSLexer *lexer) {
   bool line_continuation = false;
 
   for(;;) {
@@ -224,7 +224,7 @@ static bool scan_ruby(TSLexer *lexer) {
     lexer->advance(lexer, false);
   }
 
-  lexer->result_symbol = RUBY;
+  lexer->result_symbol = CRYSTAL;
   return true;
 }
 
@@ -349,8 +349,8 @@ bool tree_sitter_slangtemplate_external_scanner_scan(
     }
   }
 
-  if (valid_symbols[RUBY] && !valid_symbols[ERROR_SENTINEL]) {
-    return scan_ruby(lexer);
+  if (valid_symbols[CRYSTAL] && !valid_symbols[ERROR_SENTINEL]) {
+    return scan_crystal(lexer);
   }
 
   if (valid_symbols[ATTR_VALUE_QUOTED]) {
@@ -361,31 +361,31 @@ bool tree_sitter_slangtemplate_external_scanner_scan(
     }
   }
 
-  if (valid_symbols[ATTR_VALUE_RUBY] ||
-      valid_symbols[ATTR_VALUE_RUBY_P] ||
-      valid_symbols[ATTR_VALUE_RUBY_S] ||
-      valid_symbols[ATTR_VALUE_RUBY_B]) {
+  if (valid_symbols[ATTR_VALUE_CRYSTAL] ||
+      valid_symbols[ATTR_VALUE_CRYSTAL_P] ||
+      valid_symbols[ATTR_VALUE_CRYSTAL_S] ||
+      valid_symbols[ATTR_VALUE_CRYSTAL_B]) {
     if (lexer->lookahead != ' ' &&
         lexer->lookahead != '\t' &&
         lexer->lookahead != '\n') {
       char closing_delimiter;
       TSSymbol result_symbol;
 
-      if (valid_symbols[ATTR_VALUE_RUBY_P]) {
+      if (valid_symbols[ATTR_VALUE_CRYSTAL_P]) {
         closing_delimiter = ')';
-        result_symbol = ATTR_VALUE_RUBY_P;
-      } else if (valid_symbols[ATTR_VALUE_RUBY_S]) {
+        result_symbol = ATTR_VALUE_CRYSTAL_P;
+      } else if (valid_symbols[ATTR_VALUE_CRYSTAL_S]) {
         closing_delimiter = ']';
-        result_symbol = ATTR_VALUE_RUBY_S;
-      } else if (valid_symbols[ATTR_VALUE_RUBY_B]) {
+        result_symbol = ATTR_VALUE_CRYSTAL_S;
+      } else if (valid_symbols[ATTR_VALUE_CRYSTAL_B]) {
         closing_delimiter = '}';
-        result_symbol = ATTR_VALUE_RUBY_B;
+        result_symbol = ATTR_VALUE_CRYSTAL_B;
       } else {
         closing_delimiter = 0;
-        result_symbol = ATTR_VALUE_RUBY;
+        result_symbol = ATTR_VALUE_CRYSTAL;
       }
 
-      return scan_attr_ruby(lexer, closing_delimiter, result_symbol);
+      return scan_attr_crystal(lexer, closing_delimiter, result_symbol);
     }
   }
 

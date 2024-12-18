@@ -16,11 +16,11 @@ module.exports = grammar({
     $._line_separator,
 
     $.attr_value_quoted,
-    $._attr_value_ruby,
-    $._attr_value_ruby_p, // ()
-    $._attr_value_ruby_s, // []
-    $._attr_value_ruby_b, // {}
-    $.ruby,
+    $._attr_value_crystal,
+    $._attr_value_crystal_p, // ()
+    $._attr_value_crystal_s, // []
+    $._attr_value_crystal_b, // {}
+    $.crystal,
 
     $._error_sentinel
   ],
@@ -40,7 +40,7 @@ module.exports = grammar({
     ),
 
     _line: $ => choice(
-      $._ruby_block,
+      $._crystal_block,
       $.element,
       $.doctype,
       $.embedded_engine,
@@ -80,8 +80,8 @@ module.exports = grammar({
 
     nested_inline: $ => choice(
       $._nested_inline_expansion,
-      $.ruby_block_output,
-      $.ruby_block_output_noescape
+      $.crystal_block_output,
+      $.crystal_block_output_noescape
     ),
 
     _nested_inline_expansion: $ => seq(
@@ -130,12 +130,12 @@ module.exports = grammar({
         return {
           [`_attr_delimited_value_${suffix}`]: $ => choice(
             $.attr_value_quoted,
-            alias($[`_attr_value_ruby_${suffix}`], $.attr_value_ruby)
+            alias($[`_attr_value_crystal_${suffix}`], $.attr_value_crystal)
           ),
 
           [`_attr_delimited_splat_${suffix}`]: $ => seq(
             '*',
-            $[`_attr_value_ruby_${suffix}`]
+            $[`_attr_value_crystal_${suffix}`]
           ),
 
           [`_attr_delimited_${suffix}`]: $ => choice(
@@ -162,7 +162,7 @@ module.exports = grammar({
     ),
 
     attr: $ => choice(
-      seq('*', alias($._attr_value_ruby, $.attr_splat)),
+      seq('*', alias($._attr_value_crystal, $.attr_splat)),
       seq(
         field('name', $.attr_name),
         field('assignment', choice($.attr_assignment, $.attr_assignment_noescape)),
@@ -175,7 +175,7 @@ module.exports = grammar({
     attr_assignment_noescape: $ => /[ \t]*==[ \t]*/,
     _attr_value: $ => choice(
       $.attr_value_quoted,
-      alias($._attr_value_ruby, $.attr_value_ruby)
+      alias($._attr_value_crystal, $.attr_value_crystal)
       // TODO: many more
     ),
     attr_boolean: $ => $.attr_name,
@@ -215,31 +215,31 @@ module.exports = grammar({
     _doctype_xml: $ => seq('xml', optional($.doctype_xml_encoding)),
     doctype_xml_encoding: $ => /\w+/, // Not sure which chars
 
-    _ruby_block: $ => choice(
-      $.ruby_block_control,
-      $.ruby_block_output,
-      $.ruby_block_output_noescape
+    _crystal_block: $ => choice(
+      $.crystal_block_control,
+      $.crystal_block_output,
+      $.crystal_block_output_noescape
     ),
 
-    ruby_block_control: $ => seq(
+    crystal_block_control: $ => seq(
       '-',
-      $.ruby,
+      $.crystal,
       optional(field('nested', $.nested))
     ),
 
-    ruby_block_output: $ => seq(
+    crystal_block_output: $ => seq(
       optional($._space),
       '=',
       optional($._output_modifiers),
-      $.ruby,
+      $.crystal,
       optional(field('nested', $.nested))
     ),
 
-    ruby_block_output_noescape: $ => seq(
+    crystal_block_output_noescape: $ => seq(
       optional($._space),
       '==',
       optional($._output_modifiers),
-      $.ruby,
+      $.crystal,
       optional(field('nested', $.nested))
     ),
 
@@ -273,7 +273,7 @@ module.exports = grammar({
       token(prec(1, 'scss')),
       token(prec(1, 'javascript')),
       token(prec(1, 'css')),
-      token(prec(1, 'ruby'))
+      token(prec(1, 'crystal'))
     ),
 
     verbatim_text: $ => seq(
@@ -344,7 +344,7 @@ module.exports = grammar({
 
   supertypes: $ => [
     $._line,
-    $._ruby_block,
+    $._crystal_block,
     $._attr_shortcut,
     $._output_modifier
   ]

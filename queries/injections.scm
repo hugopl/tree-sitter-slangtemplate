@@ -1,8 +1,11 @@
-((ruby) @injection.content
- (#set! injection.language "ruby"))
+([(code_comment) (html_comment)] @injection.content
+  (#set! injection.language "comment"))
 
-((attr_value_ruby) @injection.content
- (#set! injection.language "ruby"))
+((crystal) @injection.content
+ (#set! injection.language "crystal"))
+
+((attr_value_crystal) @injection.content
+ (#set! injection.language "crystal"))
 
 ((attr_splat) @injection.content
- (#set! injection.language "ruby"))
+ (#set! injection.language "crystal"))
