@@ -9,3 +9,7 @@
 
 ((attr_splat) @injection.content
  (#set! injection.language "crystal"))
+
+(embedded_engine
+  (embedded_engine_name) @injection.language
+  (embedded_code) @injection.content)

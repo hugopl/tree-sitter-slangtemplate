@@ -255,22 +255,13 @@ module.exports = grammar({
 
     embedded_engine: $ => seq(
       $.embedded_engine_name,
-      optional($.attrs),
+      optional(field('attrs', $.attrs)),
       ':',
       optional($._space),
-      optional($._element_rest_text),
-      optional($._text_nested)
+      optional(alias($._text_nested, $.embedded_code))
     ),
 
     embedded_engine_name: $ => choice(
-      // These keywords are not supported as tag names for now
-      token(prec(1, 'markdown')),
-      token(prec(1, 'textile')),
-      token(prec(1, 'rdoc')),
-      token(prec(1, 'coffee')),
-      token(prec(1, 'less')),
-      token(prec(1, 'sass')),
-      token(prec(1, 'scss')),
       token(prec(1, 'javascript')),
       token(prec(1, 'css')),
       token(prec(1, 'crystal'))

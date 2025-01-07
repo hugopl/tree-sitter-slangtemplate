@@ -422,15 +422,31 @@
     "fields": {}
   },
   {
+    "type": "embedded_code",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "embedded_engine",
     "named": true,
-    "fields": {},
+    "fields": {
+      "attrs": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "attrs",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "attrs",
+          "type": "embedded_code",
           "named": true
         },
         {
@@ -635,14 +651,6 @@
     "named": false
   },
   {
-    "type": "coffee",
-    "named": false
-  },
-  {
-    "type": "crystal",
-    "named": false
-  },
-  {
     "type": "crystal",
     "named": true
   },
@@ -675,14 +683,6 @@
     "named": false
   },
   {
-    "type": "less",
-    "named": false
-  },
-  {
-    "type": "markdown",
-    "named": false
-  },
-  {
     "type": "mobile",
     "named": false
   },
@@ -699,28 +699,12 @@
     "named": true
   },
   {
-    "type": "rdoc",
-    "named": false
-  },
-  {
-    "type": "sass",
-    "named": false
-  },
-  {
-    "type": "scss",
-    "named": false
-  },
-  {
     "type": "strict",
     "named": false
   },
   {
     "type": "tag_name",
     "named": true
-  },
-  {
-    "type": "textile",
-    "named": false
   },
   {
     "type": "transitional",
